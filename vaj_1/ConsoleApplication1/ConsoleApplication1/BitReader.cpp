@@ -1,15 +1,15 @@
-#include "BinReader.hpp"
+#include "BitReader.hpp"
 
-BinReader::BinReader(const char* p) : k(0) {
+BitReader::BitReader(const char* p) : k(0) {
 	f.open(p, ios::binary);
 }
 
-char BinReader::readByte() {
+char BitReader::readByte() {
 	f.read((char*)&x, 1);
 	return x;
 }
 
-bool BinReader::readBit() {
+bool BitReader::readBit() {
 	if (k == 8) {
 		readByte();
 		k = 0;

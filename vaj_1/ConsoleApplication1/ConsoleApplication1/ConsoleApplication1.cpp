@@ -1,17 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <bitset>
+#include "BitWriter.hpp"
+#include "Compression.hpp"
 
 int main() {
 	std::vector<uint8_t> inputVector = { 55, 53, 53, 53, 53, 53, 10, 10, 11, 11 ,11, 11 };
-	std::vector<int> differenceVector; 
+	std::vector<uint8_t> inputVec = { 55, 75 };
+	
+	Compression compress;
 
-	differenceVector.push_back(inputVector[0]);
-	for (int i = 1; i < inputVector.size(); i++) {
-		differenceVector.push_back(inputVector[i] - inputVector[i - 1]);
-	}
+	compress.compressInput(inputVector);
 
-	for (int i = 0; i < differenceVector.size(); i++)
-		std::cout << differenceVector.at(i) << ' ';
 
 
 

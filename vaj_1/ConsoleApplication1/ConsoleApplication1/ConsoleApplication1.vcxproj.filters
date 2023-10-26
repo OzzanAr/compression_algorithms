@@ -18,10 +18,13 @@
     <ClCompile Include="ConsoleApplication1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BinWriter.cpp">
+    <ClCompile Include="BitWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BinReader.cpp">
+    <ClCompile Include="BitReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,7 +37,10 @@
     <ClInclude Include="BitWriter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BinReader.hpp">
+    <ClInclude Include="BitReader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compression.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

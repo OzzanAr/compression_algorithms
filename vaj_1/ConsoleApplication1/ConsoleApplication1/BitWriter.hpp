@@ -4,19 +4,21 @@
 #include <iostream>
 #include <fstream>
 
-class BinWriter {
+class BitWriter {
 public:
 	int k;
 	std::ofstream f;
 	char x;
 
-	BinWriter(const char* p);
-	~BinWriter();
+	BitWriter(const char* p);
+	~BitWriter();
 
+	//void saveToFile(const char* p);
 	void writeByte(char x);
 	void writeTwoByte(int x);
 	void writeInt(int y);
 	void writeBit(bool b);
+	void finish();
 };
 
 #endif
