@@ -27,6 +27,12 @@
     <ClCompile Include="Compression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Decompression.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Decompression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ConsoleApplication1.rc">

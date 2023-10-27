@@ -14,7 +14,8 @@ public:
 	BitReader(const char* p);
 
 	char readByte();
-	bool readBit();
+	bool readBit();	
+	bool isEOF() const;
 };
 
 #endif

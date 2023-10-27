@@ -1,5 +1,6 @@
 #include "Compression.hpp"
 #include <cstdlib>
+#include <bitset>
 
 void Compression::twoBitDifference(int8_t value) {
 	bitWriter.writeBit(0);
@@ -65,7 +66,6 @@ void Compression::absoluteEncode(int8_t value) {
 
 	uint8_t amountOfBits = value;
 	
-	// Flipping the value because of two's complement
 	for (int i = 7; i >= 0; i--) {
 		bitWriter.writeBit(amountOfBits & 1 << i);
 	}
@@ -111,6 +111,10 @@ void Compression::compressInput(std::vector<uint8_t>& inputVector) {
 		std::cout << differenceVector.at(i) << ' ';
 	std::cout << std::endl;
 
+	int8_t a = inputVector[0];
+	std::bitset<8> x(a);
+	std::cout << x;
+
 
 	// Write the first number which is alwyas 1 byte
 	bitWriter.writeByte(differenceVector[0]);
@@ -121,13 +125,12 @@ void Compression::compressInput(std::vector<uint8_t>& inputVector) {
 
 		if (val == 0) {
 			int zeroCounter = -1;
-			for (; i < differenceVector.size() && zeroCounter < 8; ++i) {
+			for (; i < differenceVector.size() && zeroCounter < 7; i++, zeroCounter++) {
 				val = differenceVector[i];
 				if (val != 0) break;
-				zeroCounter++;
 			}
-
 			repetitionEncode(zeroCounter);
+			i--;
 		}
 
 		if (abs(val) > 30) {
@@ -140,4 +143,6 @@ void Compression::compressInput(std::vector<uint8_t>& inputVector) {
 
 	bitWriter.writeBit(1);
 	bitWriter.writeBit(1);
+	bitWriter.finish();
+
 }

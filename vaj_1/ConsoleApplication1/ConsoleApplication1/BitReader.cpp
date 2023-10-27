@@ -18,3 +18,8 @@ bool BitReader::readBit() {
 	k++;
 	return b;
 }
+
+bool BitReader::isEOF() const
+{
+	return f.eof();
+}

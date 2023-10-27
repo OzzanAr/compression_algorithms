@@ -19,6 +19,7 @@ public:
 	void writeInt(int y);
 	void writeBit(bool b);
 	void finish();
+
 };
 
 #endif
