@@ -32,7 +32,6 @@ void BitWriter::writeBit(bool b) {
 		k = 0;
 		x = 0;
 	}
-	std::cout << (b) ? "1" : "0";
 }
 
 void BitWriter::finish() {

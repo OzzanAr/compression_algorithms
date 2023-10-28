@@ -43,7 +43,7 @@ int8_t Decompression::fiveDifference(int value)
 }
 
 
-std::vector<int8_t> Decompression::decompress()
+std::vector<uint8_t> Decompression::decompress()
 {
     std::ifstream inputFile("output.bin", std::ios::binary);
     if (!inputFile) {
@@ -65,14 +65,14 @@ std::vector<int8_t> Decompression::decompress()
 
     // Now, bitVector contains all the bits from the binary file.
     int counter = 0;
-    for (bool bit : bitVector) {
-        std::cout << bit;
-        counter++;
-        if (counter == 8) {
-            std::cout << " ";
-            counter = 0;
-        }
-    }
+    //for (bool bit : bitVector) {
+    //    std::cout << bit;
+    //    counter++;
+    //    if (counter == 8) {
+    //        std::cout << " ";
+    //        counter = 0;
+    //    }
+    //}
     
     std::vector<int8_t> razlikeData;
     int8_t firstByte = 0;
@@ -147,16 +147,18 @@ std::vector<int8_t> Decompression::decompress()
                 number += bitVector[i+j] << 7 - j;
             }
 
-
             razlikeData.push_back((-1 * sign)* number);
             i += 8;
         }
     }
 
-    std::cout << "\n";
-    for (int i = 0; i < razlikeData.size(); i++)
-        std::cout << (int)razlikeData.at(i) << ' ';
+    std::vector<uint8_t> calculatedVector;
+    calculatedVector.push_back(razlikeData[0]);
 
-    return razlikeData;
+    for (int i = 1; i < razlikeData.size(); i++) {
+        calculatedVector.push_back(calculatedVector[i-1] + razlikeData[i]);
+    }
+
+    return calculatedVector;
 }
 

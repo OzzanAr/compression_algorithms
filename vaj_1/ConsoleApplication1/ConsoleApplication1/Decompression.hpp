@@ -6,7 +6,7 @@
 
 class Decompression {
 public:
-	std::vector<int8_t> decompress();
+	std::vector<uint8_t> decompress();
 
 private:
 	int8_t twoDifference(int);

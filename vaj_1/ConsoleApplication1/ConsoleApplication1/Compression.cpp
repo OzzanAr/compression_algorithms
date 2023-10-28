@@ -107,14 +107,9 @@ void Compression::compressInput(std::vector<uint8_t>& inputVector) {
 		differenceVector.push_back(inputVector[i] - inputVector[i - 1]);
 	}
 
-	for (int i = 0; i < differenceVector.size(); i++)
-		std::cout << differenceVector.at(i) << ' ';
-	std::cout << std::endl;
-
-	int8_t a = inputVector[0];
-	std::bitset<8> x(a);
-	std::cout << x;
-
+	//for (int i = 0; i < differenceVector.size(); i++)
+	//	std::cout << differenceVector.at(i) << ' ';
+	//std::cout << std::endl;
 
 	// Write the first number which is alwyas 1 byte
 	bitWriter.writeByte(differenceVector[0]);
@@ -132,11 +127,10 @@ void Compression::compressInput(std::vector<uint8_t>& inputVector) {
 			repetitionEncode(zeroCounter);
 			i--;
 		}
-
-		if (abs(val) > 30) {
+		else if (abs(val) > 30) {
 			absoluteEncode(val);
 		}
-		else if(val != 0) {
+		else{
 			differenceEncode(val);
 		}
 	}
